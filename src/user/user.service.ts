@@ -11,10 +11,6 @@ export class UserService {
   async create({ email, name, password }: CreateUserDTO) {
     return await this.prisma.user.create({
       data: { email, name, password },
-      select: {
-        id: true,
-        name: true,
-      },
     });
   }
 
