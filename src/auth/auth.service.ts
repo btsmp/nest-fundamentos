@@ -17,7 +17,7 @@ export class AuthService {
     return {
       acessToken: this.jwtService.sign(
         {
-          sub: user.id,
+          id: user.id,
           name: user.name,
           email: user.email,
         },
@@ -29,7 +29,7 @@ export class AuthService {
     };
   }
 
-  async checkToken(token: string) {
+  checkToken(token: string) {
     try {
       return this.jwtService.verify(token, { issuer: 'apibrn' });
     } catch (err) {
@@ -57,7 +57,7 @@ export class AuthService {
     //TODO: send a magiclink via email
     return true;
   }
-  async reset(password: string, token: string) {
+  async reset(password: string) {
     //TODO: validar o token
 
     const id = 0;

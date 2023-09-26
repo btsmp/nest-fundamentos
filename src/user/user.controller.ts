@@ -14,6 +14,8 @@ import { UpdatePatchtUserDTO } from './dto/update-patch-user.dto';
 import { UserService } from './user.service';
 import { LogInterceptor } from 'src/interceptors/log.interceptor';
 import { ParamId } from 'src/decorators/param-id.decorator';
+import { Roles } from 'src/decorators/roles.decorator';
+import { Role } from 'src/enums/role.enum';
 
 @Controller('users')
 export class UserController {
@@ -24,6 +26,7 @@ export class UserController {
     return this.userService.create(data);
   }
 
+  @Roles(Role.Admin)
   @Get()
   async list() {
     return this.userService.list();
@@ -61,7 +64,7 @@ export class UserController {
       id,
     };
   }
-
+  @Roles(Role.Admin)
   @Delete(':id')
   async delete(@ParamId() id: number) {
     return this.userService.delete(id);
