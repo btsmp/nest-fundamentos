@@ -4,8 +4,8 @@ import { AuthRegisterDTO } from './dto/auth-register.dto';
 import { AuthResetDTO } from './dto/auth-reset.dto';
 import { AuthService } from './auth.service';
 import { AuthForgetDTO } from './dto/auth-forget.dto';
-import { AuthGuard } from 'src/guards/auth.guard';
-import { User } from 'src/decorators/user.decorator';
+import { AuthGuard } from 'src/core/guards/auth.guard';
+import { User } from 'src/common/decorators/user.decorator';
 import { User as TypeUser } from '@prisma/client';
 
 @Controller('auth')
